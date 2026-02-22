@@ -1,13 +1,14 @@
 import {cn} from "@/lib/utils";
-import {Button} from "@/components/ui/button";
+import prisma from "@/lib/db";
 
-const Page = () => {
+const Page = async () => {
+    const users = await prisma.user.findMany();
+
   const smth = true;
 
   return (
     <div className={cn("text-red-500", {'mt-2': smth})}>
-      <Button variant='outline'>First button</Button>
-      <Button variant='destructive'>Second button</Button>
+        {JSON.stringify(users)}
     </div>
   )
 
